@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lớp hình chữ nhật</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        class Rect {
+            height
+            width
+            constructor (width , height) {
+                this.height = height;
+                this.width = width;
+            }
+            getHeight() {
+                return this.height
+            }
+            setHeight() {
+                this.height = height;
+            }
+            getWidth() {
+                return this.width
+            }
+            setWidth() {
+                this.width = width;
+            }
+            getPerimeter() {
+                return (this.getHeight() + this.getWidth())*2;
+            }
+            getArea() {
+                return this.getHeight() * this.getWidth();
+            }
+            draw() {
+                const ctx = document.getElementById('canvas').getContext('2d');
+                ctx.fillRect(0, 0 ,this.width , this.height);
+            }
+        }
+
+
+        let rect1 = new Rect(200, 200);
+        let perimeterReact1 = rect1.getPerimeter();
+        alert("Chu Vi:  " + perimeterReact1);
+        let areaRect1 = rect1.getArea();
+        alert("Dien Tich:  " + areaRect1);
+        rect1.draw();
+    </script>
+</body>
+</html>
