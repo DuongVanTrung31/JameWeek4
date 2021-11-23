@@ -14,7 +14,6 @@
             constructor(name , battery) {
                 this.name = name;
                 this.battery = battery;
-                this.message = '';
                 this.draftsBox = [];
                 this.inBox = [];
                 this.sendBox = [];
@@ -22,11 +21,8 @@
 
             }
             // Bật tắt máy
-            turnOn() {
-                this.status = true;
-            }
-            turnOff() {
-                this.status = false;
+            turnOnOff() {
+                return this.status = !this.status;
             }
             getStatus() {
                 return this.status;
@@ -39,6 +35,7 @@
                 return  this.battery = battery;
             }
             // Các chức năng
+            // Soạn tin nhắn
             setMess(message) {
                 if(this.checkBattery() && this.getStatus()) {
                     this.message = message;
@@ -46,17 +43,22 @@
                     this.battery--;
                 }
             }
-            setInbox(messages) {
+            // Nhận tin nhắn
+            getInbox(messages) {
                 if(this.checkBattery() && this.getStatus()){
                     this.inBox = this.inBox.concat(messages);
                     this.battery--;
                 }
             }
-            sendMess(phone) {
-                if(this.checkBattery() && this.getStatus() && phone.getStatus()) {
+            // Gửi tin nhắn
+            sendMess(phones) {
+                if(this.checkBattery() && this.getStatus() ) {
                     this.battery--;
-                    phone.setInbox(this.draftsBox);
                     this.sendBox = this.sendBox.concat(this.draftsBox);
+                    for (let i = 0; i < phones.length; i++) {   
+                        phones[i].getInbox(this.draftsBox)
+                    }
+                    // phone.getInbox(this.draftsBox);
                     this.draftsBox = [];
                 }
             }
@@ -64,6 +66,11 @@
 
         let nokia = new MobilePhone('nokia', 100);
         let iphone = new MobilePhone('iphone', 100);
+        let iphone1 = new MobilePhone('iphone1', 100);
+        let iphone2 = new MobilePhone('iphone2', 100);
+
+        let phones = [iphone, iphone1, iphone2]
+
 
     </script>
 </body>
