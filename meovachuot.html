@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // cat
+    class Cat {
+    name
+    weight
+    speed
+    sound
+
+    constructor(name, weight, speed) {
+        this.name = name;
+        this.weight = weight;
+        this.speed = speed;
+        this.sound = "meow meow meow ..."
+    }
+
+    getSound() {
+        return this.sound;
+    }
+
+    setSpeed(speed) {
+        this.speed = speed;
+    }
+
+    setWeight(weight) {
+        this.weight = weight;
+    }
+
+    goHunting(rat) {
+        if (rat.getStatus()) {
+            if (this.speed > rat.getSpeed()) {
+                rat.arrested();
+                this.weight += rat.getWeight();
+                console.log("eat")
+            } else {
+                console.log("Mày không bắt được tao đâu =))")
+            }
+        } else {
+            console.log("Thịt không thơm !")
+        }
+    }
+}
+
+//Rat
+class Rat {
+    name
+    weight
+    speed
+    status
+
+    constructor(name, weight, speed, status) {
+        this.name = name;
+        this. weight = weight;
+        this.speed = speed;
+        this.status = status;
+        this.sound = "chit chit chit..."
+    }
+
+    getSound() {
+        return this.sound;
+    }
+
+    getStatus() {
+        return this.status;
+    }
+
+    getName() {
+        return this.name;
+    }
+
+    setName(name) {
+        this.name = name;
+    }
+
+    getWeight() {
+        return this.weight;
+    }
+
+    setWeight(weight) {
+        this.weight = weight;
+    }
+
+    getSpeed() {
+        return this.speed;
+    }
+
+    setSpeed(speed) {
+        this.speed = speed;
+    }
+
+    arrested() {
+        this.status = false;
+    }
+}
+
+// init
+let rat1 = new Rat('Mickey', 2, 10, true);
+let rat2 = new Rat('Jerry', 2, 10, false);
+let rat3 = new Rat('Chuột', 2, 20, true);
+let cat = new Cat('Tom',5,15);
+
+</script>
+</body>
+</html>

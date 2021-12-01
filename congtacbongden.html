@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công tắc bóng đèn</title>
+</head>
+<body>
+    <script>
+
+class Lamp {
+    status
+    constructor (status) {
+      this.status = status;
+    }
+    getStatus() {
+      return this.status;
+    }
+    setStatus() {
+      this.status = status;
+    }
+    turnOn() {
+      this.status = true;
+      console.log("Bóng đèn sáng");
+    }
+    turnOff() {
+      this.status = false;
+      console.log("Bóng đèn tắt");
+    }
+  }
+
+  class Button {
+    lamp
+    status
+    constructor (status) {
+      this.status = status;
+    }
+    connectToLamp (lamp) {
+      this.lamp = lamp;
+    }
+    buttonOn () {
+      if (this.lamp === undefined) {
+        console.log("Connect to lamp");
+      } else {
+        this.status = true;
+        this.lamp.turnOn ();
+      }
+    }
+    buttonOff () {
+      if (this.lamp === undefined) {
+        console.log("Connect to lamp");
+      } else {
+        this.status = false;
+        this.lamp.turnOff ();
+      }
+    }
+  }
+
+  let button = new Button(false);
+  let lamp = new Lamp(false);
+    </script>
+</body>
+</html>

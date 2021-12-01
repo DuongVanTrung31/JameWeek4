@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="game">
+</div>
+<script>
+
+    class Pikachu {
+        image;
+        top;
+        left;
+        size;
+        speed;
+
+        constructor(image, top, left, size, speed) {
+            this.image = image;
+            this.top = top;
+            this.left = left;
+            this.size = size;
+            this.speed = speed;
+        }
+
+        getpikachuElement() {
+            return '<img width="' + this.size + '"' +
+                ' height="' + this.size + '"' +
+                ' src="' + this.image + '"' +
+                ' style="top: ' + this.top + 'px; left:' + this.left + 'px; position:absolute;"' +
+                ' alt=""/>';
+        }
+
+        moveRight() {
+            this.left += this.speed;
+            console.log('left: ' + this.left);
+        }
+
+        moveLeft() {
+            this.left -= this.speed;
+            console.log('left: ' + this.left);
+        }
+
+        moveDown() {
+            this.top += this.speed;
+            console.log('top: ' + this.top);
+        }
+
+        moveUp() {
+            this.top -= this.speed;
+            console.log('top: ' + this.top);
+        }
+
+    }
+    let spe = +prompt("Nhập tốc độ :")
+    let a = "https://raw.githubusercontent.com/codegym-vn/objects/master/pikachu.png"
+    let pikachu = new Pikachu(a, 0, 0, 200, spe);
+
+    function start() {
+        if (pikachu.left < window.innerWidth - pikachu.size && pikachu.top === 0) {
+            pikachu.moveRight();
+        } else if (pikachu.top < window.innerHeight - pikachu.size && pikachu.left > 0) {
+            pikachu.moveDown();
+        } else if (pikachu.left > 0) {
+            pikachu.moveLeft();
+        } else if (pikachu.top > 0) {
+            pikachu.moveUp();
+        }
+        document.getElementById('game').innerHTML = pikachu.getpikachuElement();
+        setTimeout(start, 50)
+    }
+
+    start();
+</script>
+</body>
+</html>
